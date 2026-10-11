@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GitHub User Finder</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Lucide Icons Library -->
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+
+    <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="#" class="logo">
+            <span class="logo-icon">GH</span>
+            <span>GitHub Finder</span>
+        </a>
+
+        <p class="nav-tagline">Discover GitHub developers</p>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+
+            <p class="hero-class">DEVELOPER DISCOVERY</p>
+
+            <h1>
+                Find developers.<br>
+                Explore their <span>work.</span>
+            </h1>
+
+            <p class="hero-description">
+                Discover GitHub profiles, explore repositories,
+                and learn from developers around the world.
+            </p>
+
+            <!-- Search Form -->
+            <form class="search-form" id="search-form">
+
+                <label for="username">GitHub username</label>
+
+                <div class="search-input-group">
+
+                    <input type="text" id="username" name="username" placeholder="e.g. torvalds" autocomplete="off">
+
+                    <button type="submit">
+                        <i data-lucide="search" class="icon"></i>
+                        Search GitHub
+                    </button>
+
+                </div>
+            </form>
+
+        </section>
+
+        <section class="search-status" id="search-status" aria-live="polite">
+            <p id="status-message"></p>
+        </section>
+
+        <section class="profile-section" id="profile-section" hidden>
+
+            <div class="profile-card">
+
+                <div class="profile-header">
+
+                    <img src="" alt="GitHub profile avatar" id="profile-avatar">
+
+                    <div class="profile-identity">
+
+                        <h2 id="profile-name">User Name</h2>
+
+                        <a href="#" id="profile-username" target="_blank" rel="noopener noreferrer">
+                            <i data-lucide="at-sign" class="icon"></i>
+                            username
+                        </a>
+
+                    </div>
+                </div>
+
+                <p class="profile-bio" id="profile-bio"></p>
+
+                <div class="profile-location" id="profile-location"></div>
+
+                <div class="profile-stats">
+
+                    <div class="stat">
+                        <i data-lucide="users" class="icon"></i>
+
+                        <span id="followers-count">0</span>
+                        <span>Followers</span>
+                    </div>
+
+                    <div class="stat">
+                        <i data-lucide="user-round" class="icon"></i>
+
+                        <span id="following-count">0</span>
+                        <span>Following</span>
+                    </div>
+
+                    <div class="stat">
+                        <i data-lucide="book-open" class="icon"></i>
+
+                        <span id="repos-count">0</span>
+                        <span>Repositories</span>
+                    </div>
+
+                </div>
+
+                <a href="#" class="profile-link" id="profile-link" target="_blank" rel="noopener noreferrer">
+                    View GitHub Profile
+                    <i data-lucide="external-link" class="icon"></i>
+                </a>
+
+            </div>
+
+            <section class="repos-section" id="repos-section">
+
+                <h3 class="repos-heading">
+                    <i data-lucide="book-open" class="icon"></i>
+                    Public Repositories
+                </h3>
+
+                <div class="repos-list" id="repos-list">
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+
+</html>
