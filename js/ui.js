@@ -53,6 +53,90 @@ export function displayUser(userData) {
 
 
 export function hideProfile() {
-  profileSection.hidden = true;
+    profileSection.hidden = true;
 }
 
+
+export function displayReposError() {
+    const reposList = document.querySelector("#repos-list");
+
+    reposList.replaceChildren();
+
+    const errorMessage = document.createElement("p");
+    errorMessage.className = "repos-error";
+    errorMessage.textContent =
+        "Repositories couldn't be loaded. Please try searching again.";
+
+    reposList.appendChild(errorMessage);
+}
+
+
+export function displayRepos(repos) {
+    const reposList = document.querySelector("#repos-list");
+
+    reposList.innerHTML = "";
+
+    if (repos.length === 0) {
+        reposList.textContent = "This user has no public repositories.";
+        return;
+    }
+
+    repos.forEach(function (repo) {
+        const repoCard = document.createElement("article");
+        repoCard.className = "repo-card";
+
+        const repoName = document.createElement("h4");
+        repoName.className = "repo-name";
+
+        const repoLink = document.createElement("a");
+        repoLink.className = "repo-link";
+        repoLink.href = repo.html_url;
+        repoLink.target = "_blank";
+        repoLink.rel = "noopener noreferrer";
+        repoLink.textContent = repo.name;
+
+        repoName.appendChild(repoLink);
+
+        const repoDescription = document.createElement("p");
+        repoDescription.className = "repo-description";
+        repoDescription.textContent =
+            repo.description || "No description available.";
+
+        const repoMeta = document.createElement("div");
+        repoMeta.className = "repo-meta";
+
+        if (repo.language) {
+            const language = document.createElement("span");
+            language.className = "repo-meta-item";
+
+            const languageDot = document.createElement("span");
+            languageDot.className = "repo-language-dot";
+
+            language.appendChild(languageDot);
+            language.append(document.createTextNode(repo.language));
+
+            repoMeta.appendChild(language);
+        }
+
+        const stars = document.createElement("span");
+        stars.className = "repo-meta-item";
+        stars.innerHTML = `
+            <i data-lucide="star" class="icon"></i>
+            ${repo.stargazers_count}
+        `;
+        repoMeta.appendChild(stars);
+
+        const forks = document.createElement("span");
+        forks.className = "repo-meta-item";
+        forks.innerHTML = `
+            <i data-lucide="git-fork" class="icon"></i>
+            ${repo.forks_count}
+        `;
+        repoMeta.appendChild(forks);
+
+        repoCard.append(repoName, repoDescription, repoMeta);
+        reposList.appendChild(repoCard);
+    });
+
+    lucide.createIcons();
+}

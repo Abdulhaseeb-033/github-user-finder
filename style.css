@@ -411,3 +411,139 @@ input {
         font-size: 18px;
     }
 }
+
+.repos-section {
+    margin-top: 2rem;
+}
+
+.repos-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.repos-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.repo-card {
+    padding: 1.25rem;
+    border: 1px solid var(--border-color, #30363d);
+    border-radius: 12px;
+    background: var(--card-bg, #161b22);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.repo-card:hover {
+    transform: translateY(-3px);
+    border-color: #58a6ff;
+}
+
+.repo-name {
+    margin: 0 0 0.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.repo-description {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--muted-color, #8b949e);
+    overflow-wrap: anywhere;
+}
+
+.repo-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--muted-color, #8b949e);
+}
+
+.repo-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.repo-language-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #58a6ff;
+}
+
+.repo-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.repo-link:hover {
+    color: #58a6ff;
+}
+
+@media (max-width: 600px) {
+    .repos-list {
+        grid-template-columns: 1fr;
+    }
+
+    .repo-card {
+        padding: 1rem;
+    }
+}
+
+.repos-error {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid #d9534f;
+    border-radius: 10px;
+    color: #d9534f;
+    line-height: 1.5;
+}
+
+
+.search-status {
+    width: 100%;
+    max-width: 700px;
+    margin: 1rem auto 0;
+    text-align: center;
+}
+
+#status-message {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+#status-message.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+#status-message.loading::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: search-spin 0.7s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes search-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
